@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\XPdfSharp\XPdfSharp.csproj" />
+      <ProjectReference Include="..\XPdfSharp\XPdfSharp_net48.csproj" />
     </ItemGroup>
 
     <ItemGroup>
