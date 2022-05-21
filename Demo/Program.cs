@@ -29,7 +29,9 @@ namespace Demo
         private static async Task Demo_ExtractImagesAsync()
         {
             if (Directory.Exists("samples/images/"))
+            {
                 Directory.Delete("samples/images/", true);
+            }
 
             var pdf2Png = new Pdf2Png
             {
@@ -38,12 +40,10 @@ namespace Demo
 
             var result = await pdf2Png.GenerateImagesAsync("samples/sample.pdf", "samples/images/");
 
-            Console.WriteLine("Generated images success: {0} codeError: {1}", result == 0, result);
-            if (result != 0)
-                return;
+            Console.WriteLine($"Generated images success: { result == 0 } codeError: { result }");
 
             var files = Directory.GetFiles("samples/images/");
-            Console.WriteLine("Image Count: {0}", files.Length);
+            Console.WriteLine($"Image Count: { files.Length }");
         }
     }
 }
