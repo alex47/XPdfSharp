@@ -32,7 +32,7 @@ namespace XPdfSharp_net48
             arguments.Add(LibUtils.QuoteString(pdfFilePath));
             arguments.Add(LibUtils.QuoteString(tempFilePath));
 
-            var programName = $"{ LibUtils.ApplicationDirectory }pdftotext.exe";
+            var programName = LibUtils.XPDFTools_pdftotextPath;
             var joinedArguments = LibUtils.JoinParameters(arguments);
 
             await CustomProcess.RunProcessAsync(programName, joinedArguments);

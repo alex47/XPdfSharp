@@ -5,5 +5,13 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>1591</NoWarn>				
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="xpdftools_lib\pdftopng.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="xpdftools_lib\pdftotext.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 	
 </Project>

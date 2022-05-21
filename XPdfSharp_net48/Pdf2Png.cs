@@ -46,7 +46,7 @@ namespace XPdfSharp_net48
             arguments.Add(LibUtils.QuoteString(pdfFilePath));
             arguments.Add(LibUtils.QuoteString($"{ outputDirectory }{ Suffix }"));
 
-            var programName = $"{ LibUtils.ApplicationDirectory }pdftopng.exe";
+            var programName = LibUtils.XPDFTools_pdftopngPath;
             var joinedArguments = LibUtils.JoinParameters(arguments);
 
             return await CustomProcess.RunProcessAsync(programName, joinedArguments);
