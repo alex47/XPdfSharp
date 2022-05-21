@@ -7,7 +7,7 @@ using XPdfSharp.Interface;
 
 namespace XPdfSharp.Implementation
 {
-    public class Pdf2Png: IPdf2Png
+    public class Pdf2Png
     {
         private const string ProgramBaseName = "pdftopng";
 
