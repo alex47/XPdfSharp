@@ -1,17 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>	
-		<TargetFrameworks>net48</TargetFrameworks>		
-		<NuspecFile>XPdfSharp_net48.nuspec</NuspecFile>		
+		<TargetFrameworks>net48</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<NoWarn>1591</NoWarn>				
+		<NoWarn>1591</NoWarn>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://www.nuget.org/packages/XPDFSharp_net48</PackageProjectUrl>
+		<Description>Wrapper of XPdf Tools for C#
+This project targets .NET Framework 4.8</Description>
+		<RepositoryUrl>https://github.com/alex47/XPdfSharp_net48</RepositoryUrl>
+		<IsPublishable>True</IsPublishable>
+		<NuspecFile>XPdfSharp_net48.nuspec</NuspecFile>
     </PropertyGroup>
-    <ItemGroup>
-      <None Update="xpdftools_lib\pdftopng.exe">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="xpdftools_lib\pdftotext.exe">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\" />
+		<Folder Include="xpdftools_lib" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="xpdftools_lib\pdftopng.exe">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="xpdftools_lib\pdftotext.exe">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 	
 </Project>
