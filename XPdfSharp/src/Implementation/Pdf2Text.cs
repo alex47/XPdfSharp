@@ -6,7 +6,7 @@ using XPdfSharp.Interface;
 
 namespace XPdfSharp.Implementation
 {
-    public class Pdf2Text: IPdf2Text
+    public class Pdf2Text
     {
         private const string ProgramBaseName = "pdftotext";
         
