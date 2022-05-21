@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPdfSharp_net48", "XPdfSharp\XPdfSharp_net48.csproj", "{890EB287-6B5E-4718-9C0E-4951AC47B649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPdfSharp_net48", "XPdfSharp_net48\XPdfSharp_net48.csproj", "{890EB287-6B5E-4718-9C0E-4951AC47B649}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
