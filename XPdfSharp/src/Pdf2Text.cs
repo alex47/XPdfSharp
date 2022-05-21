@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using XPdfSharp_net48.Utils;
 
 namespace XPdfSharp_net48
 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace XPdfSharp_net48.Utils
+namespace XPdfSharp_net48
 {
     public static class LibUtils
     {
