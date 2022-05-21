@@ -13,7 +13,15 @@
 	</ItemGroup>
 	
 	<ItemGroup>		
-		<XPDFTools Include="lib\**\*.*" />
+		<XPDFTools Include="lib\**\*.*" />		
+		<None Remove="lib\linux\pdftotext.linux" />		
+		<none Remove="lib\linux\pdftotext.linux" />		
+		<none Remove="lib\linux\pdftotext.linux" />		
+		<none Remove="lib\linux\pdftotext.linux" />		
+		<none Remove="lib\linux\pdftotext.linux" />		
+		<None Remove="lib\mac\pdftotext.mac" />		
+		<none Remove="lib\mac\pdftotext.mac" />		
+		<none Remove="lib\linux\pdftotext.linux" />
 		<none Include="@(XPDFTools)">
 		  <Link>%(FileName)%(Extension)</Link>
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
