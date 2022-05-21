@@ -34,7 +34,7 @@ namespace XPdfSharp_net48
             if (!File.Exists(temp)) 
                 return string.Empty;
             
-            var text = await File.ReadAllTextAsync(temp);
+            var text = File.ReadAllText(temp);
             File.Delete(temp);
             
             return text;

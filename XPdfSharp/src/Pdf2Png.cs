@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace XPdfSharp_net48
@@ -21,12 +22,12 @@ namespace XPdfSharp_net48
         public bool FontAntiAliasing { get; set; }
         public bool VectorAntiAliasing { get; set; }
         
-        public async Task<int> GenerateImagesAsync([NotNull] string fileName, [NotNull] string outputDirectory)
+        public async Task<int> GenerateImagesAsync(string fileName, string outputDirectory)
         {
             if (!File.Exists(fileName) || !Directory.CreateDirectory(outputDirectory).Exists)
                 return -1;
             
-            if (outputDirectory[^1] != Path.DirectorySeparatorChar)
+            if (outputDirectory.Last() != Path.DirectorySeparatorChar)
                 outputDirectory = string.Concat(outputDirectory, Path.DirectorySeparatorChar);
 
             var args = ParseParameters();
