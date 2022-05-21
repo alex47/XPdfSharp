@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using XPdfSharp.Implementation.Utils;
-using XPdfSharp.Interface;
 
 namespace XPdfSharp.Implementation
 {
