@@ -15,7 +15,7 @@
     <tags>PDF TextExtract PDF2PNG XPDF</tags>
   </metadata>
   <files>
-    <file src="lib\**\*" target="build\xpdf" />
+    <file src="lib\*" target="build\xpdf" />
     <file src="bin\Release\**\*.dll" target="lib" />
     <file src="XPdfSharp_net48.targets" target="build" />
   </files>

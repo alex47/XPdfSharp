@@ -6,25 +6,4 @@
 		<NoWarn>1591</NoWarn>				
     </PropertyGroup>
 	
-	<ItemGroup>		
-		<XPDFTools Include="lib\**\*.*" />		
-		<Compile Remove="lib\linux\**" />		
-		<Compile Remove="lib\mac\**" />		
-		<Compile Remove="lib\windows\**" />		
-		<EmbeddedResource Remove="lib\linux\**" />		
-		<EmbeddedResource Remove="lib\mac\**" />		
-		<EmbeddedResource Remove="lib\windows\**" />		
-		<None Remove="lib\linux\**" />		
-		<None Remove="lib\mac\**" />		
-		<None Remove="lib\windows\**" />		
-		<XPDFTools Remove="lib\linux\**" />		
-		<XPDFTools Remove="lib\mac\**" />		
-		<XPDFTools Remove="lib\windows\**" />		
-		<None Remove="lib\pdftohtml.exe" />		
-		<none Remove="lib\pdftohtml.exe" />
-		<none Include="@(XPDFTools)">
-		  <Link>%(FileName)%(Extension)</Link>
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</none>			
-	</ItemGroup>
 </Project>
