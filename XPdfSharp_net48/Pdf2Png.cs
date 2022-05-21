@@ -8,10 +8,10 @@ namespace XPdfSharp_net48
     public class Pdf2Png
     {
         public string Suffix { get; set; } = "page";
-        
-        public int FirstPage { get; set; }
-        
-        public int LastPage { get; set; }
+
+        public int FirstPage { get; set; } = 0;
+
+        public int LastPage { get; set; } = 0;
         
         public int Dpi { get; set; } = 150;
         
