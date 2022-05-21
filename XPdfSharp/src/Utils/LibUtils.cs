@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using XPdfSharp.Enum;
 
-namespace XPdfSharp.Implementation.Utils
+namespace XPdfSharp.Utils
 {
     public static class LibUtils
     {
@@ -21,18 +20,7 @@ namespace XPdfSharp.Implementation.Utils
         public static string WorkDirectory => AppDomain.CurrentDomain.BaseDirectory;
         public static string GetProgramName(string programBase)
         {
-            switch (RuntimeInfo.OsEnvironment())
-            {
-                case Platform.Windows:
-                    return string.Concat(WorkDirectory, programBase, WindowsExtension);
-                case Platform.Linux:
-                    return string.Concat(WorkDirectory, programBase, LinuxExtension);
-                case Platform.Osx:
-                    return string.Concat(WorkDirectory, programBase, MacExtension);
-                case Platform.Unknown:                
-                default:
-                    throw new Exception("OS not supported");
-            }
+            return string.Concat(WorkDirectory, programBase, WindowsExtension);
         }
         
     }

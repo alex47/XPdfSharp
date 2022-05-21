@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace XPdfSharp.Implementation
+namespace XPdfSharp
 {
     public static class CustomProcess
     {
