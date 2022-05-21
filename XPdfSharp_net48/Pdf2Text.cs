@@ -24,6 +24,8 @@ namespace XPdfSharp_net48
         
         public bool Clip { get; set; }
         
+        public bool Simple { get; set; }
+        
         public async Task<string> ExtractTextAsync(string pdfFilePath)
         {
             var tempFilePath = Path.GetTempFileName();
@@ -80,6 +82,11 @@ namespace XPdfSharp_net48
             if (Clip)
             {
                 arguments.Add("-clip");
+            }
+
+            if (Simple)
+            {
+                arguments.Add("-simple");
             }
 
             if (NoDiagonal)
