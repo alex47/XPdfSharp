@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using XPdfSharp.Utils;
+using XPdfSharp_net48.Utils;
 
-namespace XPdfSharp
+namespace XPdfSharp_net48
 {
     public class Pdf2Text
     {

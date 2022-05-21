@@ -19,7 +19,9 @@
 		<None Remove="lib\windows\**" />		
 		<XPDFTools Remove="lib\linux\**" />		
 		<XPDFTools Remove="lib\mac\**" />		
-		<XPDFTools Remove="lib\windows\**" />
+		<XPDFTools Remove="lib\windows\**" />		
+		<None Remove="lib\pdftohtml.exe" />		
+		<none Remove="lib\pdftohtml.exe" />
 		<none Include="@(XPDFTools)">
 		  <Link>%(FileName)%(Extension)</Link>
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
