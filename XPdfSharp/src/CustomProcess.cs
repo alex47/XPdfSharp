@@ -3,24 +3,24 @@ using System.Threading.Tasks;
 
 namespace XPdfSharp_net48
 {
-    public static class CustomProcess
+    internal static class CustomProcess
     {
-        public static Task<int> RunProcessAsync(string fileName, string arguments, string workingDirectory)
+        public static Task<int> RunProcessAsync(string filePath, string arguments)
         {
-            var tcs = new TaskCompletionSource<int>();
-            var process = CreateNewProcess(fileName, arguments, workingDirectory);
+            var taskCompletionSource = new TaskCompletionSource<int>();
+            var process = CreateNewProcess(filePath, arguments);
 
             process.Exited += (sender, args) =>
             {
-                tcs.SetResult(process.ExitCode);
+                taskCompletionSource.SetResult(process.ExitCode);
                 process.Dispose();
             };
 
             process.Start();
-            return tcs.Task;
+            return taskCompletionSource.Task;
         }        
         
-        private static Process CreateNewProcess(string fileName, string arguments, string workingDirectory)
+        private static Process CreateNewProcess(string fileName, string arguments)
         {
             return new Process
             {
@@ -29,7 +29,6 @@ namespace XPdfSharp_net48
                     FileName = fileName,
                     Arguments = arguments,
                     UseShellExecute = false,
-                    WorkingDirectory = workingDirectory,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     CreateNoWindow = true

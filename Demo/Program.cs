@@ -9,26 +9,34 @@ namespace Demo
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("====== XPdfToolsForSharp Demo ======");
-            Console.WriteLine();
+            await Demo_ExtractTextAsync();
+            await Demo_ExtractImagesAsync();
+        }
 
-            var extract = new Pdf2Text();
+        private static async Task Demo_ExtractTextAsync()
+        {
+            var pdf2Text = new Pdf2Text
+            {
+                Raw = true,
+                NoBreakPage = true
+            };
 
-            extract.Raw = true;
-            extract.NoBreakPage = true;
-            var text = await extract.ExtractTextAsync("samples/sample.pdf");
+            var text = await pdf2Text.ExtractTextAsync("samples/sample.pdf");
 
             Console.WriteLine(text);
+        }
 
-            Console.WriteLine();
-
+        private static async Task Demo_ExtractImagesAsync()
+        {
             if (Directory.Exists("samples/images/"))
                 Directory.Delete("samples/images/", true);
 
-            var images = new Pdf2Png();
+            var pdf2Png = new Pdf2Png
+            {
+                Dpi = 75
+            };
 
-                images.Dpi = 75;
-            var result = await images.GenerateImagesAsync("samples/sample.pdf", "samples/images/");
+            var result = await pdf2Png.GenerateImagesAsync("samples/sample.pdf", "samples/images/");
 
             Console.WriteLine("Generated images success: {0} codeError: {1}", result == 0, result);
             if (result != 0)

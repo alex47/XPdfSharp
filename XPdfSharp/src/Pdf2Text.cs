@@ -6,61 +6,95 @@ namespace XPdfSharp_net48
 {
     public class Pdf2Text
     {
-        private const string ProgramBaseName = "pdftotext";
-        
         public int FirstPage { get; set; }
+        
         public int LastPage { get; set; }
+        
         public string Encode { get; set; } = "UTF-8";
+        
         public bool Layout { get; set; }
+        
         public bool Table { get; set; }
+        
         public bool Raw { get; set; }
+        
         public bool NoBreakPage { get; set; }
+        
         public bool NoDiagonal { get; set; }
+        
         public bool Clip { get; set; }
         
-        public async Task<string> ExtractTextAsync(string fileName)
+        public async Task<string> ExtractTextAsync(string pdfFilePath)
         {
-            var temp = LibUtils.RandomTempFile("txt");
-            var args = ParseParameters();
-            
-            args.Add(LibUtils.QuotedStr(fileName));
-            args.Add(LibUtils.QuotedStr(temp));
-            
-            var programName = LibUtils.GetProgramName(ProgramBaseName);
-            var fullArgs = LibUtils.ParseParameters(args);
-            var workDir = LibUtils.WorkDirectory;
+            var tempFilePath = Path.GetTempFileName();
+            var arguments = ParseParameters();
 
-            await CustomProcess.RunProcessAsync(programName, fullArgs, workDir);
-            if (!File.Exists(temp)) 
+            arguments.Add(LibUtils.QuoteString(pdfFilePath));
+            arguments.Add(LibUtils.QuoteString(tempFilePath));
+
+            var programName = $"{ LibUtils.ApplicationDirectory }pdftotext.exe";
+            var joinedArguments = LibUtils.JoinParameters(arguments);
+
+            await CustomProcess.RunProcessAsync(programName, joinedArguments);
+
+            if (File.Exists(tempFilePath) == false)
+            {
                 return string.Empty;
+            }
             
-            var text = File.ReadAllText(temp);
-            File.Delete(temp);
+            var text = File.ReadAllText(tempFilePath);
+            File.Delete(tempFilePath);
             
             return text;
         }
 
-        public void Dispose()
-        {
-        }
-
         private List<string> ParseParameters()
         {
-            var args = new List<string>();
+            var arguments = new List<string>();
+
+            if (0 < FirstPage)
+            {
+                arguments.Add($"-f { FirstPage }");
+            }
+
+            if (0 < LastPage)
+            {
+                arguments.Add($"-l { LastPage }");
+            }
+
+            if (Layout)
+            {
+                arguments.Add("-layout");
+            }
+
+            if (Table)
+            {
+                arguments.Add("-table");
+            }
+
+            if (Raw)
+            {
+                arguments.Add("-raw");
+            }
+
+            if (Clip)
+            {
+                arguments.Add("-clip");
+            }
+
+            if (NoDiagonal)
+            {
+                arguments.Add("-nodiag");
+            }
             
-            if (FirstPage > 0) args.Add($"-f {FirstPage}");
-            if (LastPage > 0) args.Add($"-l {LastPage}");
-            if (Layout) args.Add("-layout");
-            if (Table) args.Add("-table");
-            if (Raw) args.Add("-raw");
-            if (Clip) args.Add("-clip");
-            if (NoDiagonal) args.Add("-nodiag");
-            
-            args.Add($"-enc {Encode}");
-            
-            if (NoBreakPage) args.Add("-nopgbrk");
-            
-            return args;
+            if (NoBreakPage)
+            {
+                arguments.Add("-nopgbrk");
+            }
+
+            arguments.Add($"-enc { Encode }");
+
+            return arguments;
         }
     }
 }

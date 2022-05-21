@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,63 +7,99 @@ namespace XPdfSharp_net48
 {
     public class Pdf2Png
     {
-        private const string ProgramBaseName = "pdftopng";
-
         public string Suffix { get; set; } = "page";
+        
         public int FirstPage { get; set; }
+        
         public int LastPage { get; set; }
+        
         public int Dpi { get; set; } = 150;
+        
         public bool Monochrome { get; set; }
+        
         public bool GrayScale { get; set; }
+        
         public bool IncludeAlpha { get; set; }
+        
         public int Rotation { get; set; } = 0;
+        
         public bool EnableFreeType { get; set; }
+        
         public bool FontAntiAliasing { get; set; }
+        
         public bool VectorAntiAliasing { get; set; }
         
-        public async Task<int> GenerateImagesAsync(string fileName, string outputDirectory)
+        public async Task<int> GenerateImagesAsync(string pdfFilePath, string outputDirectory)
         {
-            if (!File.Exists(fileName) || !Directory.CreateDirectory(outputDirectory).Exists)
+            if (File.Exists(pdfFilePath) == false || Directory.CreateDirectory(outputDirectory).Exists == false)
+            {
                 return -1;
+            }
             
             if (outputDirectory.Last() != Path.DirectorySeparatorChar)
+            {
                 outputDirectory = string.Concat(outputDirectory, Path.DirectorySeparatorChar);
+            }
 
-            var args = ParseParameters();
-            args.Add(LibUtils.QuotedStr(fileName));
-            args.Add(LibUtils.QuotedStr($"{outputDirectory}{Suffix}"));
+            var arguments = ParseParameters();
 
-            var programName = LibUtils.GetProgramName(ProgramBaseName);
-            var fullArgs = LibUtils.ParseParameters(args);
-            var workDir = LibUtils.WorkDirectory;
+            arguments.Add(LibUtils.QuoteString(pdfFilePath));
+            arguments.Add(LibUtils.QuoteString($"{ outputDirectory }{ Suffix }"));
 
-            return await CustomProcess.RunProcessAsync(programName, fullArgs, workDir);
+            var programName = $"{ LibUtils.ApplicationDirectory }pdftopng.exe";
+            var joinedArguments = LibUtils.JoinParameters(arguments);
+
+            return await CustomProcess.RunProcessAsync(programName, joinedArguments);
         }
         
-        public void Dispose()
-        {
-        }
-
         private List<string> ParseParameters()
         {
-            var args = new List<string>();
-            
-            if (FirstPage > 0) args.Add($"-f {FirstPage}");
-            if (LastPage > 0) args.Add($"-l {LastPage}");
-            
-            args.Add($"-r {Dpi}");
-            
-            if (Monochrome) args.Add("-mono");
-            if (GrayScale) args.Add("-gray");
-            if (IncludeAlpha) args.Add("-alpha");
-            
-            args.Add($"-rot {Rotation}");
-            
-            if (EnableFreeType) args.Add("-freetype yes");
-            if (FontAntiAliasing) args.Add("-aa yes");
-            if (VectorAntiAliasing) args.Add("-aaVector yes");
-            
-            return args;
+            var arguments = new List<string>();
+
+            if (0 < FirstPage)
+            {
+                arguments.Add($"-f { FirstPage }");
+            }
+
+            if (0 < LastPage)
+            {
+                arguments.Add($"-l { LastPage }");
+            }
+
+            if (Monochrome)
+            {
+                arguments.Add("-mono");
+            }
+
+            if (GrayScale)
+            {
+                arguments.Add("-gray");
+            }
+
+            if (IncludeAlpha)
+            {
+                arguments.Add("-alpha");
+            }
+
+            if (EnableFreeType)
+            {
+                arguments.Add("-freetype yes");
+            }
+
+            if (FontAntiAliasing)
+            {
+                arguments.Add("-aa yes");
+            }
+
+            if (VectorAntiAliasing)
+            {
+                arguments.Add("-aaVector yes");
+            }
+
+            arguments.Add($"-r { Dpi }");
+            arguments.Add($"-rot { Rotation }");
+
+            return arguments;
         }
     }
 }
