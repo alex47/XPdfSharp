@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>	
 		<TargetFrameworks>net48</TargetFrameworks>		
-		<NuspecFile>XPdfSharp.nuspec</NuspecFile>		
+		<NuspecFile>XPdfSharp_net48.nuspec</NuspecFile>		
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>1591</NoWarn>				
     </PropertyGroup>
