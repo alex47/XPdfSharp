@@ -7,21 +7,19 @@
     </PropertyGroup>
 	
 	<ItemGroup>
-		<Folder Include="lib\linux" />
-		<Folder Include="lib\mac" />
 		<Folder Include="lib\windows" />
 	</ItemGroup>
 	
 	<ItemGroup>		
 		<XPDFTools Include="lib\**\*.*" />		
-		<None Remove="lib\linux\pdftotext.linux" />		
-		<none Remove="lib\linux\pdftotext.linux" />		
-		<none Remove="lib\linux\pdftotext.linux" />		
-		<none Remove="lib\linux\pdftotext.linux" />		
-		<none Remove="lib\linux\pdftotext.linux" />		
-		<None Remove="lib\mac\pdftotext.mac" />		
-		<none Remove="lib\mac\pdftotext.mac" />		
-		<none Remove="lib\linux\pdftotext.linux" />
+		<Compile Remove="lib\linux\**" />		
+		<Compile Remove="lib\mac\**" />		
+		<EmbeddedResource Remove="lib\linux\**" />		
+		<EmbeddedResource Remove="lib\mac\**" />		
+		<None Remove="lib\linux\**" />		
+		<None Remove="lib\mac\**" />		
+		<XPDFTools Remove="lib\linux\**" />		
+		<XPDFTools Remove="lib\mac\**" />
 		<none Include="@(XPDFTools)">
 		  <Link>%(FileName)%(Extension)</Link>
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
