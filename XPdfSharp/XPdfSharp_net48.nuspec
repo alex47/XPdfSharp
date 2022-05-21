@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>XPDFSharp_net48</id>
+    <version>1.0.0</version>
+    <title>XPDFTools wrapper for C# (.NET Framework 4.8)</title>
+    <authors>Alex Nemeth</authors>
+    <owners/>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MPL-2.0</license>
+    <projectUrl>https://github.com/alex47/XPdfSharp</projectUrl>
+    <description>C# Wrapper of XPDF Tools (.NET Framework 4.8)</description>
+    <releaseNotes>First release of the .NET Framework 4.8 version</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <tags>PDF TextExtract PDF2PNG XPDF</tags>
+  </metadata>
+  <files>
+    <file src="lib\**\*" target="build\xpdf" />
+    <file src="bin\Release\**\*.dll" target="lib" />
+    <file src="XPdfSharp_net48.targets" target="build" />
+  </files>
+</package>
