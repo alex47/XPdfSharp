@@ -10,8 +10,6 @@ namespace XPdfSharp_net48
         private const string Quoted = "\"";
         private const string ArgumentEnd = " ";
         private const string WindowsExtension = ".exe";
-        private const string LinuxExtension = ".linux";
-        private const string MacExtension = ".mac";
         
         public static string RandomFileName(string ext = DefaultExt) => $"{Guid.NewGuid()}.{ext}";
         public static string RandomTempFile(string ext = DefaultExt) => $"{Path.GetTempPath()}{RandomFileName(ext)}";
