@@ -21,3 +21,8 @@ var pdf2Text = new XPdfSharp_net48.Pdf2Text
 string extractedText = await pdf2Text.ExtractTextAsync(pdfFilePath);
 Console.WriteLine(extractedText);
 ```
+
+
+Also change this field to Copy if newer for the exe files.
+
+![image](https://user-images.githubusercontent.com/10761683/169700781-47ca9d04-a519-4381-9fdb-7b339a7178d5.png)
